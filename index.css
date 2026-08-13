@@ -431,18 +431,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .mobile-nav-link:last-child { border-bottom: none; }
 .mobile-nav-link:hover { color: var(--clr-accent); }
 
-/* 9. HERO */
 #hero {
   min-height: 88vh; /* Tighter viewport height */
   display: flex;
   align-items: flex-start; /* Anchor to the top instead of centering */
   position: relative;
   overflow: hidden;
-  background: linear-gradient(140deg,
-    #0f1e28 0%,
-    #1c2d3a 30%,
-    #263545 60%,
-    #1a2e3e 100%);
+  background: 
+    linear-gradient(140deg, 
+      rgba(15, 30, 40, 0.92) 0%, 
+      rgba(28, 45, 58, 0.94) 50%, 
+      rgba(26, 46, 62, 0.96) 100%),
+    url('assets/hero-bg.png') no-repeat center center / cover;
 }
 
 .hero-bg-pattern {
@@ -523,7 +523,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-headline.visible { opacity: 1; transform: translateY(0); }
 
 .hero-logo-img-large {
-  height: clamp(76px, 11vw, 112px);
+  height: clamp(90px, 13vw, 135px);
   width: auto;
   max-width: 100%;
   display: block;
