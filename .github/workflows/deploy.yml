@@ -1,0 +1,66 @@
+name: Deploy PBG Website to EC2
+
+on:
+  push:
+    branches: [main]        # Auto-deploy when you push to main
+  workflow_dispatch:        # Also allows manual trigger from GitHub UI
+
+jobs:
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    environment: production  # Optional: require approval in GitHub
+
+    steps:
+      # ── 1. Checkout code ─────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── 2. Install rsync ─────────────────────────────────────
+      - name: Install rsync
+        run: sudo apt-get install -y rsync
+
+      # ── 3. Write SSH private key ──────────────────────────────
+      - name: Configure SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/pbg-deploy-key
+          chmod 600 ~/.ssh/pbg-deploy-key
+          ssh-keyscan -H "${{ secrets.EC2_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      # ── 4. Deploy files via rsync ─────────────────────────────
+      - name: Sync files to EC2
+        run: |
+          rsync -avz --progress \
+            --exclude='.git' \
+            --exclude='.gitignore' \
+            --exclude='*.sh' \
+            --exclude='.DS_Store' \
+            --exclude='.github' \
+            -e "ssh -i ~/.ssh/pbg-deploy-key -o StrictHostKeyChecking=no" \
+            ./ \
+            "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/var/www/pbgsearch/"
+
+      # ── 5. Fix permissions & reload Nginx ─────────────────────
+      - name: Finalize deployment
+        run: |
+          ssh -i ~/.ssh/pbg-deploy-key \
+            -o StrictHostKeyChecking=no \
+            "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}" \
+            "sudo chown -R nginx:nginx /var/www/pbgsearch && \
+             sudo chmod -R 755 /var/www/pbgsearch && \
+             sudo nginx -t && \
+             sudo systemctl reload nginx"
+
+      # ── 6. Verify the site is up ──────────────────────────────
+      - name: Health check
+        run: |
+          sleep 3
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "http://${{ secrets.EC2_HOST }}")
+          if [ "$HTTP_STATUS" = "200" ]; then
+            echo "✅ Site is responding (HTTP $HTTP_STATUS)"
+          else
+            echo "⚠️  Site returned HTTP $HTTP_STATUS — check Nginx logs"
+            exit 1
+          fi

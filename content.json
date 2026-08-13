@@ -1,0 +1,164 @@
+{
+  "site": {
+    "title": "Pollack Badawi Group LLC — PBG",
+    "description": "PBG is one of the country's premier attorney search firms. With over 70 years of collective experience, we deliver legal talent with integrity, trust, and expertise."
+  },
+  "nav": {
+    "links": [
+      { "label": "Why PBG",         "href": "#whypbg" },
+      { "label": "About",           "href": "#about" },
+      { "label": "Partner With Us", "href": "#partner" },
+      { "label": "Current Openings","href": "#openings" },
+      { "label": "We're Hiring!",   "href": "#careers" },
+      { "label": "Contact",         "href": "#contact" }
+    ]
+  },
+  "hero": {
+    "pillars": ["Integrity.", "Trust.", "Expertise."],
+    "headline": "Pollack Badawi Group LLC (PBG)",
+    "subheadline": "One of the country's premier attorney search firms.",
+    "description": "Headquartered in DC's iconic Watergate, PBG's team of expert recruiters have extensive experience matching top legal talent with the leaders of the legal industry nationally. Our goal is to provide individualized and confidential expertise to candidates and employers.",
+    "cta_primary":   { "label": "Hire Top Talent",     "href": "#partner" },
+    "cta_secondary": { "label": "Find Your Next Role",  "href": "#openings" }
+  },
+  "whyPBG": {
+    "heading": "Why PBG?",
+    "subheading": "We deliver legal talent.",
+    "body": "We believe that finding talent doesn't stop at top credentials. With over 70 years of collective experience as attorneys and managing legal talent, PBG is committed to ensuring that the individual needs of employers and candidates are met in every search. As attorneys, we understand the importance of confidentiality and integrity in our work. Trust, integrity, and expertise — that's our promise to you.",
+    "nalsc_note": "PBG adheres to the ethical standards set forth by the National Association of Legal Search Consultants (NALSC).",
+    "stats": [
+      { "value": "70+",  "label": "Years of Collective Experience" },
+      { "value": "500+", "label": "Candidates Advised" },
+      { "value": "100+", "label": "Top Firms Served" }
+    ]
+  },
+  "team": [
+    {
+      "name":     "Abe Pollack",
+      "title":    "Co-Founder & Principal",
+      "photo":    "https://pbgsearch.com/wp-content/uploads/2017/09/Abe-Profile-Pic-Crop-1-e1508855821677.jpg",
+      "bio_short": "Abe has counseled hundreds of attorneys on their job searches and fostered relationships with managing partners, general counsels, and recruiting managers.",
+      "bio_full":  "Abe has counseled hundreds of attorneys on their job searches and fostered relationships with managing partners, general counsels, and recruiting managers. Abe was the Associate Dean for Professional Development and Career Strategy at the George Washington University Law School and a Director at the Georgetown University Law Center's Office of Career Services. He has worked closely with the hiring leaders at the nation's top legal employers.\n\nAbe was also a Managing Director at the world's largest legal search firm. He practiced law at two large law firms in DC, where his practice focused on mergers and acquisitions and securities law. Abe is a graduate of The University of Texas School of Law and Franklin & Marshall College.\n\nAbe has frequently held leadership positions. During his undergraduate studies, Abe served as class president for all four years of college. He recently served on the Board of Directors of NALP and was a member of a DC Bar Commission focusing on 'low bono' legal representation. Abe has presented at conferences organized by the American Bar Association, NALP, WALRAA, and the Association of American Law Schools.",
+      "office":   "(202) 853-9131",
+      "mobile":   "(202) 251-2966",
+      "email":    "apollack@pbgsearch.com",
+      "linkedin": "https://www.linkedin.com/in/abraham-pollack-1b918a13/"
+    },
+    {
+      "name":     "Ethel Badawi",
+      "title":    "Co-Founder & Principal",
+      "photo":    "https://pbgsearch.com/wp-content/uploads/2017/09/Ethel-Badawi-headshot-small.jpg",
+      "bio_short": "Ethel has dedicated her professional life to helping individuals find careers that inspire joy and growth, advising over 500 university graduates, paralegals, and attorneys.",
+      "bio_full":  "Ethel's experience as a recruiter, attorney, and career advisor are the perfect ingredients for partnering with firms on talent searches and guiding candidates to positions where they will flourish. As a recruiter, Ethel identified and cultivated talent for international development projects across all sectors in Central Europe, Africa, and Asia. As an attorney, she worked in commercial restructuring and served as an active member of the hiring committee. As a career advisor, Ethel has guided countless candidates through the process of finding the right fit, from entry level positions to lateral transitions.\n\nEthel serves as President for APABA-DC. She has held positions as Co-Chair of the Membership Committee and the Career Development Committee of the Women's Bar Association in Washington, DC. She is a faculty member at the College of Professional Studies at The George Washington University and is a frequent presenter on career and professional development for legal professionals. Ethel has a B.A. in Spanish and Economics from Wellesley College and a J.D. from The George Washington University.",
+      "office":   "(202) 808-9085",
+      "mobile":   "(202) 714-4230",
+      "email":    "ebadawi@pbgsearch.com",
+      "linkedin": "https://www.linkedin.com/in/ethelbadawi"
+    },
+    {
+      "name":     "Sheila Driscoll",
+      "title":    "Director",
+      "photo":    "https://pbgsearch.com/wp-content/uploads/2018/02/Sheila-professional-head-shot-12-300x300.jpg",
+      "bio_short": "Sheila has been involved with the legal profession for over 20 years — first as a federal law clerk and practicing BigLaw attorney, then as a career advisor to law students and attorneys.",
+      "bio_full":  "Sheila has been involved with the legal profession for over 20 years — first as a federal law clerk and practicing BigLaw attorney, then as a career advisor to law students and attorneys. She has advised thousands of law students and attorneys on navigating their job search and landing the most competitive positions with federal judges and prestigious law firms.\n\nAs the Director of Judicial Clerkships at The George Washington University Law School for 15 years, Sheila developed close relationships with students, alumni, faculty, and judges to facilitate clerkship hiring. She has held several leadership positions on NALP and WALRAA. Sheila has a B.A. from Stanford University and a J.D. from Georgetown University Law Center.",
+      "office":   "(202) 804-4988",
+      "mobile":   "(202) 841-2047",
+      "email":    "sdriscoll@pbgsearch.com",
+      "linkedin": "https://www.linkedin.com/in/sheilakdriscoll/"
+    },
+    {
+      "name":     "Torey Phillips",
+      "title":    "Director",
+      "photo":    "https://pbgsearch.com/wp-content/uploads/2023/05/rmp_3752-e1683218092657-300x281.jpg",
+      "bio_short": "Torey has worked in the Washington, D.C. legal industry for almost two decades, specializing in the full life cycle of attorney talent acquisition as well as professional development and diversity initiatives.",
+      "bio_full":  "Torey has worked in the Washington, D.C. legal industry for almost two decades, specializing in the full life cycle of attorney talent acquisition as well as professional development and diversity initiatives. Most recently, she was Director of Attorney Recruiting at Crowell & Moring, an AmLaw Top 100 law firm, where she led a team of professionals responsible for the recruitment of top legal talent across the country.\n\nThroughout her career, Torey has actively collaborated with attorneys and senior legal professionals to design and implement innovative recruiting and diversity programs that have been nationally recognized by industry leaders. She believes deeply that the primary indicator of an organization's success is the quality of its people. Torey has held leadership positions with NALP and WALRAA and has a B.A. from Elon University.",
+      "office":   "(202) 851-4843",
+      "mobile":   "",
+      "email":    "tphillips@pbgsearch.com",
+      "linkedin": "https://www.linkedin.com/in/torey-phillips-3626851/"
+    }
+  ],
+  "partner": {
+    "heading": "Partner With Us",
+    "subheading": "Whether you're looking to hire or seeking your next opportunity, we're here to help.",
+    "columns": [
+      {
+        "id":      "employers",
+        "icon":    "🏛️",
+        "heading": "Legal Employers",
+        "body":    "Finding the right talent means understanding your needs and your values. As a boutique firm, we strive to meet with every client and build lasting partnerships for strategic growth. PBG places attorneys with a diverse range of in-house legal departments and AmLaw 200, regional, and boutique law firms. We carefully screen our candidates to ensure that they fit your hiring criteria and office culture.",
+        "cta":     "Hire Top Talent"
+      },
+      {
+        "id":      "candidates",
+        "icon":    "⚖️",
+        "heading": "Legal Candidates",
+        "body":    "We take a bespoke approach to every search because we know that no two candidates are the same. We work with associates, counsel, and partners seeking new opportunities at law firms, corporations, government agencies, and nonprofits. Our team of former attorneys understands the nuances of your career trajectory and will guide you to the right opportunity.",
+        "cta":     "Find My Next Role"
+      },
+      {
+        "id":      "both",
+        "icon":    "🤝",
+        "heading": "The PBG Difference",
+        "body":    "Our founders are former attorneys. We've sat on hiring committees. We've counseled hundreds through career transitions. This means we speak your language, we understand your pressures, and we know what it takes to make the right match. Our ethical commitment to confidentiality, integrity, and trust sets us apart.",
+        "cta":     "Learn More"
+      }
+    ]
+  },
+  "openings": {
+    "heading": "Current Openings",
+    "subheading": "Opportunities we're actively working on for exceptional legal talent.",
+    "empty_message": "No current openings are listed at this time. Please check back soon or reach out directly — we may have confidential searches that match your profile.",
+    "jobs": [
+      {
+        "title":       "Lateral Associate — Corporate/M&A",
+        "firm":        "AmLaw 50 Firm",
+        "location":    "Washington, DC",
+        "type":        "Law Firm",
+        "class_years": "4–7 years",
+        "description": "Seeking a talented corporate associate with M&A experience for a top-tier DC firm. Strong academics and portable business is a plus.",
+        "apply_url":   "#contact"
+      },
+      {
+        "title":       "Senior Counsel — Employment",
+        "firm":        "Fortune 500 Company",
+        "location":    "Washington, DC (Hybrid)",
+        "type":        "In-House",
+        "class_years": "7–10 years",
+        "description": "In-house employment counsel role with broad responsibilities including litigation management, HR partnerships, and policy development.",
+        "apply_url":   "#contact"
+      },
+      {
+        "title":       "Partner — Litigation",
+        "firm":        "Regional Firm",
+        "location":    "Washington, DC",
+        "type":        "Law Firm",
+        "class_years": "Partner-level",
+        "description": "A growing regional firm is seeking a litigation partner with portable business to join its expanding DC office.",
+        "apply_url":   "#contact"
+      }
+    ]
+  },
+  "careers": {
+    "heading": "We're Hiring!",
+    "subheading": "Join the PBG Team",
+    "body": "Are you a legal professional passionate about connecting talented people with meaningful opportunities? PBG is looking for motivated individuals to join our team of expert recruiters. We offer a collaborative, dynamic environment where your knowledge of the legal industry will be put to great use.\n\nIf you have experience in legal recruiting, law firm administration, career advising, or the practice of law, we want to hear from you.",
+    "cta": "Express Interest"
+  },
+  "contact": {
+    "heading": "Contact Us",
+    "subheading": "We'd love to hear from you. Whether you're an employer seeking top talent or a candidate looking for your next opportunity, reach out today.",
+    "formspree_id": "YOUR_FORMSPREE_ID",
+    "address_line1": "2600 Virginia Avenue NW",
+    "address_line2": "Suite 1111",
+    "address_city":  "Washington, DC 20037",
+    "phone_main":    "(202) 853-9131",
+    "email_general": "info@pbgsearch.com",
+    "linkedin":      "https://www.linkedin.com/company/pollack-badawi-group-llc"
+  },
+  "footer": {
+    "tagline": "Delivering legal talent with integrity, trust, and expertise.",
+    "nalsc_note": "PBG is a proud member of the National Association of Legal Search Consultants (NALSC).",
+    "copyright": "Pollack Badawi Group LLC. All rights reserved."
+  }
+}
