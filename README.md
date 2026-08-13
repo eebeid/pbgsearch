@@ -1,4 +1,4 @@
-# PBG Website — Client Update Guide
+# PBG Website — Client Update Guide (Updated August 2026)
 
 This website is designed so you can make content updates **without touching any code**.
 All content lives in a single file: **`content.json`**
