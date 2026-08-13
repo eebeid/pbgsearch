@@ -1737,11 +1737,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @media (max-width: 768px) {
   :root { --space-xl: 2.5rem; --space-2xl: 3rem; --space-3xl: 3.5rem; }
 
+  #site-nav {
+    position: sticky;
+    background: #1c2d3a;
+    box-shadow: 0 1px 0 var(--clr-border), 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
   .hero-inner {
-    padding-top: 180px;
+    padding-top: var(--space-xl);
   }
   .hero-pillars {
-    margin-top: 40px;
+    margin-top: 0;
   }
 
   .nav-links, .nav-cta { display: none; }
