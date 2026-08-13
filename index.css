@@ -433,9 +433,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* 9. HERO */
 #hero {
-  min-height: 100vh;
+  min-height: 88vh; /* Tighter viewport height */
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Anchor to the top instead of centering */
   position: relative;
   overflow: hidden;
   background: linear-gradient(140deg,
@@ -476,7 +476,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: calc(var(--nav-height) + (var(--space-xl) / 2)) var(--space-lg) var(--space-xl);
+  /* Top padding is now exactly nav height + 1.5rem (24px) */
+  padding: calc(var(--nav-height) + var(--space-md)) var(--space-lg) var(--space-xl);
 }
 
 .hero-content { max-width: 660px; }
