@@ -750,6 +750,7 @@ function setupContactForm(contactEmail) {
       if (fileLabel) fileLabel.textContent = '📎 Attach resume or document';
 
     } catch (err) {
+      console.error('Form submission error:', err);
       showFormStatus(status, 'error', '✕ Something went wrong. Please email us directly.');
     } finally {
       if (submitBtn) {
@@ -765,7 +766,13 @@ function showFormStatus(el, type, message) {
   el.textContent = message;
   el.className = type;
   el.style.display = 'block';
-  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  try {
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  } catch (err) {
+    try {
+      el.scrollIntoView();
+    } catch (e) {}
+  }
 }
 
 /* ============================================================
