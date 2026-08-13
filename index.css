@@ -1792,6 +1792,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @media (max-width: 768px) {
   :root { --space-xl: 2.5rem; --space-2xl: 3rem; --space-3xl: 3.5rem; }
 
+  .hero-inner {
+    padding-top: calc(var(--nav-height) + var(--space-md) + 45px);
+  }
+
   .nav-links, .nav-cta { display: none; }
   .nav-hamburger       { display: flex; }
 
