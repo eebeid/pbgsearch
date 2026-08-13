@@ -95,12 +95,8 @@ function renderHero(data) {
     `).join('');
   }
 
-  if (headlineEl) {
-    const parts = h.headline.split('(PBG)');
-    headlineEl.innerHTML = parts.length > 1
-      ? `${esc(parts[0])}<span>(PBG)</span>${esc(parts[1])}`
-      : esc(h.headline);
-  }
+  // Hero headline is now the official logo image inside index.html for SEO.
+
 
   if (taglineEl) taglineEl.textContent = h.subheadline || '';
   if (descEl)    descEl.textContent    = h.description  || '';
