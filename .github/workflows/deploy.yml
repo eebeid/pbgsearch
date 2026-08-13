@@ -20,7 +20,15 @@ jobs:
       - name: Install rsync
         run: sudo apt-get install -y rsync
 
-      # ── 3. Write SSH private key ──────────────────────────────
+      # ── 3. Verify Repository Secrets ──────────────────────────
+      - name: Verify Secrets
+        run: |
+          if [ -z "${{ secrets.EC2_HOST }}" ]; then echo "::error::EC2_HOST is missing or empty"; exit 1; fi
+          if [ -z "${{ secrets.EC2_USER }}" ]; then echo "::error::EC2_USER is missing or empty"; exit 1; fi
+          if [ -z "${{ secrets.EC2_SSH_KEY }}" ]; then echo "::error::EC2_SSH_KEY is missing or empty"; exit 1; fi
+          echo "All required secrets are present."
+
+      # ── 4. Write SSH private key ──────────────────────────────
       - name: Configure SSH key
         run: |
           mkdir -p ~/.ssh
