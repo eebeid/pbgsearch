@@ -825,6 +825,36 @@ document.addEventListener('click', (e) => {
    BOOT
    ============================================================ */
 
+/* ============================================================
+   INTERACTIVE HERO THEME SELECTOR (CLIENT PREVIEW)
+   ============================================================ */
+
+function initThemeSelector() {
+  const container = $('.hero-theme-selector');
+  if (!container) return;
+
+  const hero = $('#hero');
+  const buttons = container.querySelectorAll('.theme-btn');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all buttons
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Remove previous design classes
+      hero.classList.remove('theme-corporate', 'theme-prestige');
+
+      const theme = btn.getAttribute('data-theme');
+      if (theme === 'corporate') {
+        hero.classList.add('theme-corporate');
+      } else if (theme === 'prestige') {
+        hero.classList.add('theme-prestige');
+      }
+    });
+  });
+}
+
 async function init() {
   // Setup nav immediately (before content loads)
   setupNav();
@@ -856,6 +886,7 @@ async function init() {
   renderFooter(data);
 
   // Page title
+  initThemeSelector();
   if (data.site?.title) document.title = data.site.title;
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc && data.site?.description) metaDesc.content = data.site.description;
