@@ -97,8 +97,6 @@ function renderHero(data) {
 
   // Hero headline is now the official logo image inside index.html for SEO.
 
-
-  if (taglineEl) taglineEl.textContent = h.subheadline || '';
   if (descEl)    descEl.textContent    = h.description  || '';
 
   if (actionsEl) {
@@ -126,123 +124,56 @@ function renderHero(data) {
     if (vis) vis.classList.add('visible');
   }, 200);
 
-  // Start word-cycle showcase
-  initShowcase();
+  // Start inline tagline placement cycle animation
+  initPlacementCycle();
 }
 
 /* ============================================================
-   HERO SHOWCASE — Word cycle animation
+   HERO PLACEMENT CYCLE — Tagline word cycle animation
    ============================================================ */
 
-const SHOWCASE_WORDS = [
-  { text: 'Associates',       sub: 'Law Firm'         },
-  { text: 'Partners',         sub: 'Lateral Moves'    },
-  { text: 'General Counsel',  sub: 'In-House'         },
-  { text: 'Senior Counsel',   sub: 'Corporate'        },
-  { text: 'Judicial Clerks',  sub: 'Federal & State'  },
-  { text: 'Directors',        sub: 'Legal Ops'        },
+const PLACEMENT_WORDS = [
+  { text: 'Partners',         color: 'var(--clr-gold)' },
+  { text: 'Associates',       color: 'var(--clr-accent)' },
+  { text: 'General Counsel',  color: 'var(--clr-gold)' },
+  { text: 'Senior Counsel',   color: 'var(--clr-accent)' },
+  { text: 'Judicial Clerks',  color: 'var(--clr-gold)' },
+  { text: 'Directors',        color: 'var(--clr-accent)' },
 ];
 
-const SHOWCASE_INTERVAL = 3200; // ms per word
+function initPlacementCycle() {
+  const el = $('#hero-placement');
+  if (!el) return;
 
-function initShowcase() {
-  const track    = $('#hero-word-track');
-  const dotsEl   = $('#hero-showcase-dots');
-  const progress = $('#hero-showcase-progress');
-  if (!track || !dotsEl || !progress) return;
-
-  const words = SHOWCASE_WORDS;
   let current = 0;
-  let timer   = null;
-  let progTimer = null;
+  const words = PLACEMENT_WORDS;
 
-  // Build word slides
-  track.innerHTML = words.map((w, i) => html`
-    <div class="hero-word${i === 0 ? ' active' : ''}" data-index="${i}" aria-label="${esc(w.text)}">
-      <span class="hero-word-text">${esc(w.text)}</span>
-      <span class="hero-word-sub">${esc(w.sub)}</span>
-    </div>
-  `).join('');
-
-  // Build dots
-  dotsEl.innerHTML = words.map((_, i) => html`
-    <li class="hero-showcase-dot${i === 0 ? ' active' : ''}" data-dot="${i}"></li>
-  `).join('');
-
-  const slides = $$('.hero-word', track);
-  const dots   = $$('.hero-showcase-dot', dotsEl);
-
-  // Animate progress bar for current slide
-  function animateProgress() {
-    clearInterval(progTimer);
-    progress.style.transition = 'none';
-    progress.style.width = '0%';
-
-    // Force reflow to restart transition
-    progress.getBoundingClientRect();
-    progress.style.transition = `width ${SHOWCASE_INTERVAL}ms linear`;
-    progress.style.width = '100%';
-  }
-
-  // Advance to next word
-  function advance() {
-    const prev = current;
-    current = (current + 1) % words.length;
-
-    // Exit current
-    slides[prev].classList.remove('active');
-    slides[prev].classList.add('exit');
-    dots[prev].classList.remove('active');
-
-    // After exit transition clears, reset the old slide
+  function cycle() {
+    el.classList.add('fade-out');
+    
     setTimeout(() => {
-      slides[prev].classList.remove('exit');
-    }, 450);
-
-    // Enter next
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-
-    animateProgress();
+      current = (current + 1) % words.length;
+      el.textContent = words[current].text;
+      el.style.color = words[current].color;
+      el.style.borderBottomColor = words[current].color === 'var(--clr-gold)' 
+        ? 'rgba(201, 162, 86, 0.35)' 
+        : 'rgba(53, 186, 242, 0.35)';
+      
+      el.classList.remove('fade-out');
+      el.classList.add('fade-in');
+      
+      // Force reflow
+      el.offsetHeight;
+      
+      el.classList.remove('fade-in');
+    }, 400);
   }
 
-  // Kick off
-  animateProgress();
-  timer = setInterval(advance, SHOWCASE_INTERVAL);
+  // Set initial color based on first word
+  el.style.color = words[0].color;
+  el.style.borderBottomColor = 'rgba(201, 162, 86, 0.35)';
 
-  // Pause on hover
-  const showcase = track.closest('.hero-showcase');
-  if (showcase) {
-    showcase.addEventListener('mouseenter', () => {
-      clearInterval(timer);
-      clearInterval(progTimer);
-    });
-    showcase.addEventListener('mouseleave', () => {
-      animateProgress();
-      timer = setInterval(advance, SHOWCASE_INTERVAL);
-    });
-
-    // Click dots to jump
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        clearInterval(timer);
-        const prev = current;
-        if (prev === i) return;
-
-        slides[prev].classList.remove('active');
-        slides[prev].classList.add('exit');
-        dots[prev].classList.remove('active');
-        setTimeout(() => slides[prev].classList.remove('exit'), 450);
-
-        current = i;
-        slides[current].classList.add('active');
-        dots[current].classList.add('active');
-
-        animateProgress();
-        timer = setInterval(advance, SHOWCASE_INTERVAL);
-      });
-    });
-  }
+  setInterval(cycle, 3200);
 }
 
 /* ============================================================
