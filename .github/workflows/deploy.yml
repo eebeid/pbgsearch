@@ -2,7 +2,7 @@ name: Deploy PBG Website to EC2
 
 on:
   push:
-    branches: [main]        # Auto-deploy when you push to main
+    branches: [main]        # Triggers auto-deployment on push to main branch
   workflow_dispatch:        # Also allows manual trigger from GitHub UI
 
 jobs:
