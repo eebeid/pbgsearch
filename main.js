@@ -843,12 +843,10 @@ function initThemeSelector() {
       btn.classList.add('active');
 
       // Remove previous design classes
-      hero.classList.remove('theme-corporate', 'theme-prestige');
+      hero.classList.remove('theme-prestige');
 
       const theme = btn.getAttribute('data-theme');
-      if (theme === 'corporate') {
-        hero.classList.add('theme-corporate');
-      } else if (theme === 'prestige') {
+      if (theme === 'prestige') {
         hero.classList.add('theme-prestige');
       }
     });
