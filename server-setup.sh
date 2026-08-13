@@ -38,9 +38,7 @@ sudo mkdir -p /var/www/pbgsearch
 sudo chown -R nginx:nginx /var/www/pbgsearch
 sudo chmod -R 755 /var/www/pbgsearch
 
-# Give ec2-user write access for deployments
-sudo usermod -aG nginx ec2-user
-sudo chmod g+w /var/www/pbgsearch
+sudo chmod 2775 /var/www/pbgsearch
 
 # ── 4. NGINX CONFIG ──────────────────────────────────────────
 echo "▶ Writing Nginx configuration..."
