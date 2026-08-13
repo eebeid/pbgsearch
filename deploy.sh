@@ -81,7 +81,7 @@ success "Files uploaded"
 # ── Fix permissions on server ─────────────────────────────────
 info "Fixing file permissions..."
 ssh -i "$PBG_KEY" -q "${PBG_EC2_USER}@${PBG_EC2_HOST}" \
-    "sudo chown -R nginx:nginx ${REMOTE_DIR} && sudo chmod -R 755 ${REMOTE_DIR}"
+    "sudo chown -R nginx:nginx ${REMOTE_DIR} && sudo chmod -R 775 ${REMOTE_DIR}"
 
 success "Permissions set"
 
