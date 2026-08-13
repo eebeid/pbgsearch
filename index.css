@@ -1793,7 +1793,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   :root { --space-xl: 2.5rem; --space-2xl: 3rem; --space-3xl: 3.5rem; }
 
   .hero-inner {
-    padding-top: calc(var(--nav-height) + var(--space-md) + 45px);
+    padding-top: 160px;
   }
 
   .nav-links, .nav-cta { display: none; }
