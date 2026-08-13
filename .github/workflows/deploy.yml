@@ -36,7 +36,7 @@ jobs:
           chmod 600 ~/.ssh/pbg-deploy-key
           ssh-keyscan -H "${{ secrets.EC2_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
 
-      # ── 4. Deploy files via rsync ─────────────────────────────
+      # ── 5. Deploy files via rsync ─────────────────────────────
       - name: Sync files to EC2
         run: |
           rsync -rlvz --progress \
@@ -45,9 +45,9 @@ jobs:
             --exclude='*.sh' \
             --exclude='.DS_Store' \
             --exclude='.github' \
-            -e "ssh -i ~/.ssh/pbg-deploy-key -o StrictHostKeyChecking=no" \
+            -e "ssh -v -i ~/.ssh/pbg-deploy-key -o StrictHostKeyChecking=no" \
             ./ \
-            "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/var/www/pbgsearch/"
+            "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/var/www/pbgsearch/" > rsync_log.txt 2>&1 || (cat rsync_log.txt && exit 1)
 
       # ── 5. Fix permissions & reload Nginx ─────────────────────
       - name: Finalize deployment
