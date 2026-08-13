@@ -65,7 +65,7 @@ success "SSH connection OK"
 
 # ── Sync files ───────────────────────────────────────────────
 info "Uploading files..."
-rsync -avz --progress \
+rsync -rlvz --progress \
     --exclude='.git' \
     --exclude='.gitignore' \
     --exclude='*.sh' \

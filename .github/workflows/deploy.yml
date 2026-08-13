@@ -31,7 +31,7 @@ jobs:
       # ── 4. Deploy files via rsync ─────────────────────────────
       - name: Sync files to EC2
         run: |
-          rsync -avz --progress \
+          rsync -rlvz --progress \
             --exclude='.git' \
             --exclude='.gitignore' \
             --exclude='*.sh' \
