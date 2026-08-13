@@ -1810,7 +1810,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
   .footer-grid        { grid-template-columns: 1fr; }
 
-  .hero-headline { font-size: 2rem; }
+  .hero-headline { display: none; }
   .hero-actions  { flex-direction: column; }
   .hero-actions .btn { width: 100%; justify-content: center; }
 
