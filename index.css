@@ -567,16 +567,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .hero-actions.visible { opacity: 1; transform: translateY(0); }
 
-/* Hero placement inline text animation */
 .hero-placement-accent {
   display: inline-block;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem); /* larger size for prominence */
   font-weight: 700;
   color: var(--clr-gold);
   position: relative;
   transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
   border-bottom: 2px solid rgba(201, 162, 86, 0.35);
-  padding-bottom: 1px;
-  margin: 0 2px;
+  padding-bottom: 3px;
+  margin-top: 8px;
 }
 
 .hero-placement-accent.fade-out {
