@@ -432,7 +432,7 @@ function renderContact(data) {
     form.action = `https://formspree.io/f/${d.formspree_id}`;
   }
 
-  setupContactForm();
+  setupContactForm(d?.email_general);
 }
 
 /* ============================================================
@@ -673,7 +673,7 @@ function observeNew(observer) {
    CONTACT FORM
    ============================================================ */
 
-function setupContactForm() {
+function setupContactForm(contactEmail) {
   const form = $('#contact-form');
   const status = $('#form-status');
   const fileInput = $('#file-input');
@@ -691,13 +691,19 @@ function setupContactForm() {
     });
   }
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    // Basic HTML validation
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
 
     const submitBtn = form.querySelector('[type="submit"]');
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending…';
+      submitBtn.textContent = 'Opening Mail…';
     }
 
     if (status) {
@@ -706,30 +712,43 @@ function setupContactForm() {
     }
 
     try {
-      const formData = new FormData(form);
-      const action = form.action;
+      const name = $('#field-name')?.value || '';
+      const email = $('#field-email')?.value || '';
+      const phone = $('#field-phone')?.value || '';
+      const contactType = $('#field-type')?.value || '';
+      const message = $('#field-message')?.value || '';
+      const file = fileInput?.files?.[0];
 
-      if (!action || action.includes('YOUR_FORMSPREE_ID')) {
-        // Dev mode: simulate success
-        await new Promise(r => setTimeout(r, 800));
-        showFormStatus(status, 'success', '✓ Message received! (Note: configure your Formspree ID in content.json to enable real submissions.)');
-        form.reset();
-        if (fileLabel) fileLabel.textContent = '📎 Attach resume or document';
-      } else {
-        const res = await fetch(action, {
-          method: 'POST',
-          body: formData,
-          headers: { Accept: 'application/json' }
-        });
+      const targetEmail = contactEmail || 'info@pbgsearch.com';
+      const subject = encodeURIComponent(`PBG Inquiry from ${name}`);
+      
+      let bodyText = `Name: ${name}\n`;
+      bodyText += `Email: ${email}\n`;
+      if (phone) bodyText += `Phone: ${phone}\n`;
+      bodyText += `Type: ${contactType}\n\n`;
+      bodyText += `Message:\n${message}\n`;
 
-        if (res.ok) {
-          showFormStatus(status, 'success', '✓ Thank you! We\'ll be in touch shortly.');
-          form.reset();
-          if (fileLabel) fileLabel.textContent = '📎 Attach resume or document';
-        } else {
-          throw new Error('Server error');
-        }
+      if (file) {
+        bodyText += `\n---\n[Please attach your resume file: "${file.name}" manually to this email]`;
       }
+
+      const body = encodeURIComponent(bodyText);
+      const mailtoUrl = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+
+      // Open email client
+      window.location.href = mailtoUrl;
+
+      // Show success feedback
+      showFormStatus(
+        status, 
+        'success', 
+        '✓ Opened your email client! Please hit "Send" in your mail application to complete.'
+      );
+      
+      // Reset form fields
+      form.reset();
+      if (fileLabel) fileLabel.textContent = '📎 Attach resume or document';
+
     } catch (err) {
       showFormStatus(status, 'error', '✕ Something went wrong. Please email us directly.');
     } finally {
